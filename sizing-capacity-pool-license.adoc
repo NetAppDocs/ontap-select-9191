@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: sizing-capacity-pool-license.html
+keywords: license, licensing, Capacity Tiers, usable, space
+summary: The Capacity Tiers license is based on the underlying disk capacity managed by each node and not the usable capacity of the node, HA-pair, or cluster. Each Capacity Tiers license is assigned to an individual node serial number for a specified capacity and requires an accompanying support contract.
+---
+= Determine Capacity Pools license size for ONTAP Select
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The licensed capacity for a Capacity Pool license is in full TB amounts, with a minimum of 2 TB. You calculate the licensed capacity by multiplying the amount of usable space by the overhead factor. The overhead factor estimates the ONTAP Select software overhead capacity to be taken from the usable space and it applies to determining the ONTAP Select capacity for NVMe, SSD, HDD, or virtual drives. The overhead factor differs between a single-node and multi-node (HA-pair based) clusters:
+
+* Overhead factor for single-node clusters is 1.13
+* Overhead factor for multi-node clusters is 2.67
+
+You need to calculate the licensed capacity based on the usable space to ensure you have enough for your deployment. For example, you want 20 TB of usable capacity for an HA pair (10 TB per node):
+
+* With an HA pair, the data is duplicated between both nodes for redundancy, so for 20 TB of usable data in an HA pair, you need to have 20 TB per node, in case one of the nodes goes offline. 
+* The factor of 2.67 doubles the capacity of each node and adds the overhead capacity (0.67) needed for ONTAP Select to function. 
+* The license capacity per node is 27 TB (10 x 2.67 = 26.7). For the HA pair, you require two 27 TB licenses to have 20 TB of usable capacity.
+
+[cols="25,30,45",options="header"]
+|===
+| Description | Single-node | HA pair or mix of HA pair and single-node
+
+| Usable space
+| 20 TB
+| 10 TB per single-node cluster
+
+20 TB for HA pair
+
+| Licensed space
+| 23 TB 
+
+(20 x 1.13 = 22.6, round up to next full TB)
+| 54 TB 
+
+(20 x 2.67 = 53.4, round up to next full TB)
+
+
+| Maximum usable space per node
+
+*Note*: The maximum managed space per node or HA pair is 400 TB
+|  353 TB 
+
+(400 / 1.13)
+a| Per single-node in a cluster: 
+
+149 TB (400 / 2.67)
+
+Per HA pair in a cluster: 
+
+298 TB (2 x 149)
+|===
+
+.What's next
+
+link:task_lic_acquire_cp.html[Acquire a Capacity Pools license for ONTAP Select]
+
+// 2026 AUG 25, ONTAPDOC-4132
+// 2026 FEB 16, ONTAPDOC-3723
+// 2026 FEB 6, ONTAPDOC-3699
+// 2026 JAN 27, ONTAPDOC-3021

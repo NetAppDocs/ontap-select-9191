@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: concept_nw_supported_configs.html
+keywords: ontap select, supported network configurations
+summary: Select the best hardware and configure your network to optimize performance and resiliency.
+---
+= Supported ONTAP Select network configurations
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Select the best hardware and configure your network to optimize performance and resiliency.
+
+Server vendors understand that customers have different needs and choice is critical. As a result, when purchasing a physical server, there are numerous options available when making network connectivity decisions. Most commodity systems ship with various NIC choices that provide single-port and multiport options with varying permutations of speed and throughput. This includes support for 25Gb/s and 40Gb/s NIC adapters with VMware ESX.
+
+Because the performance of the ONTAP Select VM is tied directly to the characteristics of the underlying hardware, increasing the throughput to the VM by selecting higher-speed NICs results in a higher-performing cluster and a better overall user experience. Four 10Gb NICs or two higher-speed NICs (25/40 Gb/s) can be used to achieve a high performance network layout. There are a number of other configurations that are also supported. For two-node clusters, 4 x 1Gb ports or 1 x 10Gb ports are supported. For single node clusters, 2 x 1Gb ports are supported.
+
+.Network minimum and recommended configurations
+
+There are several supported Ethernet configurations based on the cluster size.
+
+[cols="30,35,35"*,options="header"]
+|===
+| Cluster size
+| Minimum Requirements
+| Recommendation
+
+|Single-node cluster
+|2 x 1GbE
+|2 x 10GbE
+
+|Two-node cluster or MetroCluster SDS
+|4 x 1GbE or 1 x 10GbE
+|2 x 10GbE
+
+|Four, six, eight, ten, or twelve-node cluster
+|2 x 10GbE
+|4 x 10GbE or 2 x 25/40GbE
+|===
+
+NOTE: Conversion between single link and multiple link topologies on a running cluster is not supported because of the possible need to convert between different NIC teaming configurations required for each topology.
+
+.Network configuration using multiple physical switches
+
+When sufficient hardware is available, NetApp recommends using the multiswitch configuration shown in the following figure, due to the added protection against physical switch failures.
+
+image:BP_02.jpg[Network configuration using multiple physical switches]
+
+// 2023-08-15, Github issue #213
+// 2024-03-18, ONTAPDOC-1692

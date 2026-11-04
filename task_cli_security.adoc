@@ -1,0 +1,24 @@
+---
+sidebar: sidebar
+permalink: task_cli_security.html
+keywords: administer, administering, cli, security
+summary: There are several related tasks you can perform as part of securing an ONTAP Select deployment.
+---
+= Secure an ONTAP Select deployment
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can secure an ONTAP Select deployment by changing the password for the Deploy virtual machine administrator account as needed using the command line interface.
+
+.Steps
+
+. Sign in to the Deploy utility CLI using the administrator account.
+
+. Change the password:
+`password modify`
+
+. Respond to all prompts as appropriate for your environment.
