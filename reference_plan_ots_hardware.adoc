@@ -1,0 +1,138 @@
+---
+sidebar: sidebar
+permalink: reference_plan_ots_hardware.html
+keywords: plan, planning, vmware, hardware, hardware requirements
+summary: There are several hardware requirements and planning issues you should consider related to the VMware environment.
+---
+= ONTAP Select VMware hypervisor and hardware considerations
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+There are several hardware requirements and planning issues you should consider related to the VMware environment.
+
+== Hypervisor requirements
+
+There are several requirements related to the hypervisor where ONTAP Select runs.
+
+[NOTE]
+You should review the link:reference_release_notes.html[ONTAP Select Release Notes] for any additional known restrictions or limitations.
+
+=== VMware licensing
+
+To deploy an ONTAP Select cluster, your organization must have a valid VMware vSphere license for the hypervisor hosts where ONTAP Select runs. You should use the licenses that are appropriate for your deployment.
+
+=== Software compatibility
+
+You can deploy ONTAP Select on KVM and ESXi hypervisors.
+
+[role="tabbed-block"]
+=====
+.KVM
+--
+ONTAP Select supports the following KVM hypervisor versions:  
+
+* KVM on Red Hat Enterprise Linux (RHEL) 10.1, 10.0, 9.7, 9.6, 9.5, 9.4, 9.2, 9.1, 9.0, 8.8, 8.7, and 8.6
+* KVM on Rocky Linux 10.1, 10.0, 9.7, 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0, 8.9, 8.8, 8.7, and 8.6 
+
+--
+.ESXi
+--
+ONTAP Select supports the following ESXi hypervisor versions:
+
+* VMware ESXi 9.0
+* VMware ESXi 8.0 U3
+* VMware ESXi 8.0 U2
+* VMware ESXi 8.0 U1 (build 21495797)
+* VMware ESXi 8.0 GA (build 20513097)
+
+[NOTE]
+NetApp supports ONTAP Select on the identified versions of ESXi as long as VMware also continues to support the same versions.
+
+[NOTE]
+ESXi 7.0 GA reached end of availability status. If you have ONTAP Select clusters with this version, you must upgrade to the supported versions as per the https://mysupport.netapp.com/matrix[Interoperability Matrix Tool (IMT)^].
+--
+=====
+
+=== VMware vCenter and standalone ESXi hosts
+
+If an ESXi hypervisor host is managed by a vCenter server, you must register the host to the Deploy administration utility using the vCenter credentials. You cannot register the host as a standalone host using the ESXi credentials.
+
+== Core hardware requirements
+
+The physical hypervisor host where you deploy ONTAP Select must meet several hardware requirements. You can choose any platform for the hypervisor host, as long as it meets the minimum hardware requirements. The following vendors provide supported hardware platforms: Cisco, Dell, HP, Fujitsu, Lenovo, and Supermicro.
+
+ONTAP Select supports CPU models based on Intel Xeon Sandy Bridge and Advanced Micro Devices (AMD) processors.
+
+Refer to the https://mysupport.netapp.com/matrix[Interoperability Matrix Tool^] for more information.
+
+=== Basic hardware requirements
+
+There are several common hardware requirements that apply to all platforms regardless of the node instance type or license offering.
+
+.Processor
+
+The supported microprocessors include Intel Xeon server processors and AMD processors.
+
+Refer to link:https://www.intel.com/content/www/us/en/products/processors/xeon/view-all.html?Processor+Type=1003[Intel Xeon Processors^] and link:https://www.amd.com/en/products/processors/server/epyc.html[AMD EPYC Server CPUs^] for more information. 
+
+.Ethernet configuration
+
+There are several supported Ethernet configurations based on the cluster size.
+
+[cols="2,3,3" options="header"]
+|===
+| Cluster size
+| Minimum requirements
+| Recommended requirements
+
+|Single node cluster
+|2 x 1GbE
+|2 x 10GbE
+
+|Two-node cluster or MetroCluster SDS
+|4 x 1GbE or 1 x 10GbE
+|2 x 10GbE
+
+|Four, six, eight, ten, or twelve-node cluster
+|2 x 10GbE
+|4 x 10GbE or 2 x 25/40GbE
+|===
+
+=== Additional hardware requirements based on the instance type
+
+There are several additional hardware requirements based on the node instance type.
+
+[cols="a1,a2,a2,a2" options="header"]
+|===
+|Node size |CPU cores |Memory |Required platform license offering
+|Small
+|Six physical cores or greater, with four reserved for ONTAP Select
+|24GB or greater, with 16GB reserved for ONTAP Select
+|Standard, premium, or premium XL
+|Medium
+|Ten physical cores or greater, with eight reserved for ONTAP Select
+|72GB or greater, with 64GB reserved for ONTAP Select
+|Premium or premium XL
+|Large
+|Eighteen physical cores or greater, with sixteen reserved for ONTAP Select
+|136GB or greater, with 128GB reserved for ONTAP Select
+|Premium XL
+|===
+
+NOTE: There are additional disk requirements based on the platform license. See link:reference_plan_ots_storage.html[Storage and RAID] for more information.
+
+.Related information
+
+Learn about link:concept_lic_platforms.html[the platform license offerings for ONTAP Select]
+
+// 2025 APR 27, ONTAPDOC-3784
+// 2025 DEC 9. ONTAPDOC-3461
+// 2024-NOV-18, ONTAPDOC-2550
+// 2023-APR-12, ONTAPDOC-979
+// 2023-SEP-25, ONTAPDOC-1204
+// 2023-OCT-17, Updated table headings
+// 2024-JUN-04, GH issue 253

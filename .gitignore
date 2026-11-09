@@ -2,8 +2,7 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
-.vscode/
-media/~$*
-.DS_Store
-.Trashes
-Thumbs.db
+build
+/build
+build.sh
+local.sh

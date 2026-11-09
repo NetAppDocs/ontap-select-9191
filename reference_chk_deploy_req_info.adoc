@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: reference_chk_deploy_req_info.html
+keywords: ontap select, deploy, pre-installation, vmware
+summary: Before installing the Deploy administration utility in a VMware environment, review the basic requirements and prepare for successful deployment.
+---
+= Required information for ONTAP Select Deploy utility installation
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Before installing the Deploy administration utility in a hypervisor environment, review the required configuration information and optional network configuration information to prepare for successful deployment.
+
+== Required configuration information
+
+As part of your deployment planning, you should determine the required configuration information before installing the ONTAP Select Deploy administration utility.
+
+[cols=2*,options="header",cols="40,60"]
+|===
+| Required information
+| Description
+| Name of the Deploy virtual machine | Identifier to use for the virtual machine.
+| Name of the hypervisor host | Identifier for the VMware ESXi or KVM hypervisor host where the Deploy utility is installed.
+| Name of the data store | Identifier for the hypervisor data store holding the virtual machine files (approximately 40GB is required).
+| Network for the virtual machine | Identifier for the Network where the Deploy virtual machine is connected.
+|===
+
+== Optional network configuration information
+
+The Deploy virtual machine is configured using DHCP by default. However, if needed, you can manually configure the network interface for the virtual machine.
+
+[cols=2*,options="header",cols="35,65"]
+|===
+| Network information
+| Description
+| Host name | Identifier of the host machine.
+| Host IP address |Static IPv4 address of the host machine.
+| Subnet mask | Subnetwork mask, based on the network the virtual machine is a part of.
+| Gateway | Default gateway or router.
+| Primary DNS server | Primary Domain Name Server.
+| Secondary DNS server | Secondary Domain Name Server.
+| Search domains | List of the search domains to use.
+|===
+
+// 2023-09-27, ONTAPDOC-1204

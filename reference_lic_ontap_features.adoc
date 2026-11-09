@@ -1,0 +1,96 @@
+---
+sidebar: sidebar
+permalink: reference_lic_ontap_features.html
+keywords: license, licensing, ontap features, default ontap features
+summary: ONTAP Select offers full support for most ONTAP functionality. Many of the ONTAP features are licensed automatically for each node when you deploy a cluster. However some features require a separate license.
+---
+= ONTAP Select support for ONTAP features
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+ONTAP Select supports most ONTAP features. Many of the ONTAP features are licensed automatically for each node when you deploy a cluster. However some features require a separate license.
+
+[NOTE]
+ONTAP features that have hardware-specific dependencies are generally not supported with ONTAP Select.
+
+[[licensed-ontap-features]]
+== ONTAP features licensed by default
+
+The following ONTAP features are supported with ONTAP Select and licensed by default:
+
+* Autonomous Ransomware Protection (ARP) (manual updates)
+* CIFS
+* Deduplication and compression
+* External key management using the Key Management Interoperability Protocol (KMIP)
++
+Learn about link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html[enabling and configuring external key management^].
+
+* FlexCache
++
+ONTAP Select supports FlexCache cache volumes with write-back. FlexCache origin volumes with write-back are not supported.
++
+link:concept_ots_overview.html#flexcache-write-back-with-ontap-select[Learn more about FlexCache write-back with ONTAP Select]
+
+* FlexClone
+* iSCSI
+* NDMP
+* NetApp Volume Encryption (non-restricted countries only)
+* NFS
+* NVMe over TCP
+* ONTAP multitenancy capability
+* ONTAP S3
+* S3 SnapMirror
+* SnapLock Select
++
+SnapLock Select is the implementation of ONTAP SnapLock designed for ONTAP Select and includes SnapLock Enterprise. It does not include SnapLock Compliance.
++
+Learn about link:https://docs.netapp.com/us-en/ontap/snaplock/index.html[ONTAP SnapLock^]
+* SnapMirror
++
+ONTAP Select does not support consistency groups in Asynchronous SnapMirror.
+* SnapRestore
+* SnapVault
+* Storage VM disaster recovery (SVM DR)
++
+ONTAP Select supports SVM DR as both a source and destination with a maximum of 16 relationships. SVM DR support is limited to the use of the source ONTAP version to versions +2. For example, the ONTAP Select 9.16.1 source can connect to destination ONTAP versions 9.16.1, 9.17.1, or 9.18.1.
+
+[[other-ontap-features]]
+== ONTAP features that are separately licensed
+
+You need to acquire a separate license for any ONTAP feature that is not licensed by default, including:
+
+* FabricPool
++
+NOTE: You do not need a FabricPool license when utilizing StorageGRID.
+
+* MetroCluster SDS (ONTAP Select premium license offering)
+* SnapMirror cloud
++
+You need to link:https://mysupport.netapp.com/site/help[open a non-technical support case^] to obtain a SnapMirror cloud license.
++
+Learn about link:https://docs.netapp.com/us-en/ontap/concepts/snapmirror-cloud-backups-object-store-concept.html[SnapMirror cloud backups to object storage^]
+
+.Related information
+
+* link:concept_ots_overview.html#compare-ontap-select-and-ontap-9[Compare ONTAP Select and ONTAP 9]
+* link:https://mysupport.netapp.com/site/systems/master-license-keys[Learn about the NetApp ONTAP master license keys^]
+
+// 2026 JUL 10, ONTAPDOC-4067
+// 2026 JUN 15, ONTAPDOC-3941
+// 2026 APR 7, ONTAPDOC-3639
+// 2026 MAR 30, ONTAPDOC-3764
+// 2025 Sep 03, ONTAPDOC-9.17.1GA
+// 2025 Aug 22, ONTAPDOC-3141
+// 2025 JUN 25, ONTAPDOC-2741
+// 2024 JUN 17, ONTAPDOC-2049
+// 2023 Feb 15, GH issue 192
+// 2023-APR-05, ONTAPDOC-920
+// 2023-OCT-17, Added info about snaplock compliance
+// 2023-DEC-07, ONTAPDOC-1523
+// 2024-JAN-12, ONTAPDOC-1573
+// 2024-MAR-14, ONTAPDOC-1778
+// 2024-MAY-28, ONTAPDOC-1981
